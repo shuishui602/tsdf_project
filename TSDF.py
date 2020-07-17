@@ -73,14 +73,14 @@ if __name__ == "__main__":
   print("Average FPS time: {:.2f}".format(time_f))
 
   # Get mesh from voxel volume and save to disk (can be viewed with Meshlab)
-  print("Saving mesh to mesh.ply...")
-  verts, faces, norms, colors = tsdf_vol.get_mesh()
-  fusion_my.meshwrite("mesh_.ply", verts, faces, norms, colors)
+  # print("Saving mesh to mesh.ply...")
+  # verts, faces, norms, colors = tsdf_vol.get_mesh()
+  # fusion_my.meshwrite("mesh_.ply", verts, faces, norms, colors)
 
-  # Get point cloud from voxel volume and save to disk (can be viewed with Meshlab)
-  print("Saving point cloud to pc.ply...")
-  point_cloud = tsdf_vol.get_point_cloud()
-  fusion_my.pcwrite("pc_.ply", point_cloud)
+  # # Get point cloud from voxel volume and save to disk (can be viewed with Meshlab)
+  # print("Saving point cloud to pc.ply...")
+  # point_cloud = tsdf_vol.get_point_cloud()
+  # fusion_my.pcwrite("pc_.ply", point_cloud)
 
   #  # Integrate observation into voxel volume (assume color aligned with depth)
   #   tsdf_vol.integrate(color_image, depth_im, cam_intr, cam_pose, obs_weight=1.)
