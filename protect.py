@@ -31,7 +31,14 @@ def cam2pix(cam_pts, intr):
       pix[i, 1] = int(np.round((cam_pts[i, 1] * fy / cam_pts[i, 2]) + cy))
     return pix
 
-def project(vol_origin, vox_coords, vox_size, intr, cam_pose)
+def rigid_transform(xyz, transform):
+  """Applies a rigid transform to an (N, 3) pointcloud.
+  """
+  xyz_h = np.hstack([xyz, np.ones((len(xyz), 1), dtype=np.float32)])
+  xyz_t_h = np.dot(transform, xyz_h.T).T
+  return xyz_t_h[:, :3]
+
+def project(vol_origin, vox_coords, vox_size, intr, cam_pose):
   word_pts = vox2world(vol_origin, vox_coords, voxel_size)
   cam_pts = rigid_transform(word_pts, np.linalg.inv(cam_pose))
 
@@ -49,4 +56,4 @@ def project(vol_origin, vox_coords, vox_size, intr, cam_pose)
   vox_use = vox_coords[valid_pix, :]
   pix_use = pix[valid_pix,:]
 
-  return 
+  return vox_use pix_use
